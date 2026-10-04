@@ -1,0 +1,2 @@
+请列出 20 个常见德语复合词，并将每个词拆成其成分词
+（例如 Donaudampfschifffahrtsgesellschaft → Donau+dampf+schiff+fahrt+gesellschaft）。

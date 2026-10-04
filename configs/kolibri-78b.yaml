@@ -1,0 +1,37 @@
+# kolibriforge emulation of the full Kolibri-1 scale (78B / 3.46B active)
+model: kolibri-78b
+hidden: 512
+vocab: 512
+seed: 0
+
+backend:
+  name: cpu
+  model: kolibri-78b
+  api_base: ""
+  api_key: ""
+  temperature: 0.0
+
+moe:
+  num_experts: 32
+  top_k: 2
+  hidden: 512
+  expert_dim: 1024
+  sparse_ratio: 22.6
+
+merlin:
+  enabled: true
+  abstain_threshold: 0.5
+  hallucination_penalty: 1.5
+  abstain_reward: 0.2
+  correctness_reward: 1.0
+
+budget:
+  enabled: true
+  default_level: high
+  max_extra_tokens: 2048
+
+train:
+  steps: 120
+  lr: 0.05
+  reward_noise: 0.5
+  algorithm: merlin-rl

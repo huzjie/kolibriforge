@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kolibriforge"
+version = "1.0.0"
+description = "Sovereign MoE reasoning LLM with honest abstention (Kolibri-1 direction)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "kolibriforge" }]
+keywords = ["moe", "mixture-of-experts", "unibpe", "tokenizer", "hallucination",
+            "abstention", "reasoning-budget", "llm", "sovereign-ai"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+
+[project.scripts]
+kolibriforge = "kolibriforge.cli.main:main"
+
+[tool.setuptools.packages.find]
+include = ["kolibriforge*"]

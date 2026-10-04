@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kolibriforge.fullname" . }}
+  labels:
+    app: {{ include "kolibriforge.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "kolibriforge.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "kolibriforge.name" . }}
+    spec:
+      containers:
+        - name: {{ include "kolibriforge.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: KOLIBRI_CONFIG
+              value: {{ .Values.config | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
